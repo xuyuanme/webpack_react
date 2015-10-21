@@ -5,7 +5,8 @@ import ItemTypes from '../constants/itemTypes';
 const noteSource = {
   beginDrag(props) {
     return {
-      id: props.id
+      id: props.id,
+      task: props.task // needed for preview
     };
   },
   isDragging(props, monitor) {
@@ -26,6 +27,7 @@ const noteTarget = {
 };
 
 @DragSource(ItemTypes.NOTE, noteSource, (connect, monitor) => ({
+  connectDragPreview: connect.dragPreview(),
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging()
 }))
@@ -34,13 +36,13 @@ const noteTarget = {
 }))
 export default class Note extends React.Component {
   render() {
-    const {connectDragSource, connectDropTarget, isDragging,
-      onMove, id, ...props} = this.props;
+    const {connectDragPreview, connectDragSource, connectDropTarget,
+      isDragging, onMove, task, id, ...props} = this.props;
 
-    return connectDragSource(connectDropTarget(
+    return connectDragPreview(connectDragSource(connectDropTarget(
       <li style={{
         opacity: isDragging ? 0 : 1
       }} {...props}>{props.children}</li>
-    ));
+    )));
   }
 }
