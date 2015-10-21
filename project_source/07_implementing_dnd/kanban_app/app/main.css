@@ -2,6 +2,11 @@ body {
   background: cornsilk;
 
   font-family: sans-serif;
+
+  /* touch fixes */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .lane {
@@ -15,6 +20,12 @@ body {
 
   min-width: 10em;
   vertical-align: top;
+
+  /* touch fixes */
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
 }
 
 .lane-header {
@@ -42,6 +53,12 @@ body {
 .add-lane, .lane-add-note button {
   background-color: #fdfdfd;
   border: 1px solid #ccc;
+
+  /* touch fixes */
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
 }
 
 .notes {

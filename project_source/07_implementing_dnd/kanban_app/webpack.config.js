@@ -35,7 +35,8 @@ var common = {
   },
   plugins: [
     new HtmlwebpackPlugin({
-      title: 'Kanban app'
+      title: 'Kanban app',
+      template: path.resolve(__dirname, 'lib/index.tpl')
     })
   ]
 };
