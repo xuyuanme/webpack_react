@@ -18,13 +18,18 @@ process.env.BABEL_ENV = TARGET;
 var common = {
   entry: APP_PATH,
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.ts', '.tsx']
   },
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
         loaders: ['babel'],
+        include: APP_PATH
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader?useBabel=true&useCache=true',
         include: APP_PATH
       }
     ]
